@@ -9,6 +9,7 @@ import { StartComponent } from './start/start.component';
 import { WishComponent } from './wish/wish.component';
 import { PreviewComponent } from './preview/preview.component';
 import { PreviewallComponent } from './previewall/previewall.component';
+import { WishService } from './wish.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { PreviewallComponent } from './previewall/previewall.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [WishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

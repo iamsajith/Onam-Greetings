@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="col w-75 wrapper">
   <div class="text-center mt-2 mb-3 name">
     <h2 class="my-2">Hi, {{ data.urname }}</h2>
     <p>
@@ -9,17 +9,39 @@
   </div>
   <div class="container">
     <div class="row d-flex justify-content-between ">
-      <div class="col-5 card mx-1">
-        <div class="card-body">
-         <h3 class="text-center">For {{data.frname}}</h3>
-         <button class="btn">SUBMIT</button>
-        </div>
+     <div class="col-sm card mx-1">
+      <div class="card-body text-center">
+       <h3 class="text-center mb-3"><em> For {{data.frname}}</em></h3>
+       <div class="container">
+        <div class="row buttons">
+         <div class="col-md m-1"><button class="btn btn-outline-dark px-2">Send Mail</button></div>
+         <div class="col-md m-1"><button class="btn btn-outline-dark px-2">Preview</button></div>
+       </div>
       </div>
-      <div class="col-5 card mx-1">
-        <div class="card-body">
-         <h3 class="text-center">Other Friends</h3>
+      <div class="align m-2">
+      <input type="url"  class="mt-1" #clipboard1="ngModel" #inp1 [(ngModel)]="url" readonly>
+      <button class="btn m-2" (click)="click(inp1)"(click)="change()">📋{{ck[0]}}</button>
+     </div>
+        <div class="col"><button class="icon p-2 m-2 rounded-pill">Share to Whatsapp</button></div>
+      </div>
+      </div>
+      <div class="col-sm card mx-1">
+        <div class="card-body text-center">
+         <h3 class="text-center mb-3"><em>Other friends</em> </h3>
+         <div class="container">
+         <div class="row buttons">
+          <div class="col-md m-1"><button class="btn btn-outline-dark px-2">Send Mail</button></div>
+          <div class="col-md m-1"><button class="btn btn-outline-dark px-2">Preview</button></div>
+        </div>
+       </div>
+       <div class="align m-2">
+        <input type="url"  class="mt-1" #clipboard2="ngModel" #inp2 [(ngModel)]="urls" readonly>
+        <button class="btn m-2" (click)="click(inp2)" (click)="change1()">📋{{ck[1]}}</button>
+       </div>
+          <div class="col"><button class="icon p-2 m-2 rounded-pill">Share to Whatsapp</button></div>
+        </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
