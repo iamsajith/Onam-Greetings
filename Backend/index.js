@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000
 const app = new express();
 app.use(cors())
 app.use(express.json({urlencoded:true}));
+app.use(express.static('./dist/frontend'));
 
 var gifs = ["https://c.tenor.com/faq8AqAPxBIAAAAC/onam-maveli.gif","https://c.tenor.com/GFX5MRhYZU0AAAAC/smile-karikku.gif","https://c.tenor.com/2QUDNrRI4WcAAAAC/dance-karikku.gif","https://c.tenor.com/FX7Ck8cjkmgAAAAd/anu799maveli.gif"];
 
@@ -42,5 +43,7 @@ app.get('/api/wish/:id',(req,res)=>{
     res.send(data)
   })
 })
+app.get('/*', (req, res)=> {
+  res.sendFile(path.join(__dirname + './dist/frontend/index.html'))})
 
 app.listen(PORT)
