@@ -6,9 +6,16 @@ const path = require('path');
 const { findOne } = require('./wishModel');
 const PORT = process.env.PORT || 5000
 
+
 const app = new express();
 app.use(cors())
 app.use(express.json({urlencoded:true}));
+
+var gifs = ["https://c.tenor.com/faq8AqAPxBIAAAAC/onam-maveli.gif","https://c.tenor.com/GFX5MRhYZU0AAAAC/smile-karikku.gif","https://c.tenor.com/2QUDNrRI4WcAAAAC/dance-karikku.gif","https://c.tenor.com/FX7Ck8cjkmgAAAAd/anu799maveli.gif"];
+
+randomGif = (gifs)=>{
+  return gifs[Math.floor(Math.random()*gifs.length)];
+}
 
 app.post('/',(req,res)=>{
  res.header("Access-Control-Allow-Origin","*");
@@ -17,7 +24,7 @@ app.post('/',(req,res)=>{
   urname: req.body.urname,
   frname:req.body.frname,
   email : req.body.email,
-  gif : "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif",
+  gif : randomGif(gifs),
 
  }
  var wishdb = new wishData(wish)

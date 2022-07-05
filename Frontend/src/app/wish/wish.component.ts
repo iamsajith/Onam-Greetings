@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { WishService } from '../wish.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataModel } from '../start/data.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class WishComponent implements OnInit {
   ck = ['Copy Link', 'Copy Link'];
   data: any = new DataModel('', '', '');
 
-  constructor(public wish: WishService, private actiroute: ActivatedRoute) {}
+  constructor(public wish: WishService, private actiroute: ActivatedRoute,private route:Router) {}
 
   ngOnInit(): void {
     this.id = this.actiroute.snapshot.params['id'];
@@ -36,5 +36,19 @@ export class WishComponent implements OnInit {
     input.select();
     document.execCommand('copy');
     console.log(input);
+  }
+  preview(){
+    this.wish.postWish(this.data).subscribe((Data)=>{
+      var id = JSON.parse(JSON.stringify(Data))
+      this.route.navigate(['/wish/',id._id])
+      console.log(id)
+    })
+  }
+  previewall(){
+    this.wish.postWish(this.data).subscribe((Data)=>{
+      var id = JSON.parse(JSON.stringify(Data))
+      this.route.navigate(['/wishes/',id._id])
+      console.log(id)
+    })
   }
 }
