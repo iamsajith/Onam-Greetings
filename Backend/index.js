@@ -17,7 +17,7 @@ randomGif = (gifs)=>{
   return gifs[Math.floor(Math.random()*gifs.length)];
 }
 
-app.post('/',(req,res)=>{
+app.post('/api/',(req,res)=>{
  res.header("Access-Control-Allow-Origin","*");
  res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE")
  var wish ={
@@ -34,7 +34,7 @@ app.post('/',(req,res)=>{
   )
 
 })
-app.get('/wish/:id',(req,res)=>{
+app.get('/api/wish/:id',(req,res)=>{
   res.header("Access-Control-Allow-Origin","*");
   res.header("Access-Control-Allow-Method:GET,POST,PUT,DELETE")
   wishData.findById(req.params.id).then((data)=>{

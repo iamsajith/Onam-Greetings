@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class WishService {
+  server_address:string = 'api';
   constructor(public http:HttpClient,public router:Router) { }
-  postWish(data:string){return this.http.post("http://localhost:5000",data)
+  postWish(data:string){return this.http.post(`${this.server_address}`,data)
 }
   getWish(id:any){
-   return this.http.get<any>('http://localhost:5000/wish/'+id)
+   return this.http.get<any>(`${this.server_address}/wish/`+id)
   }
 }
